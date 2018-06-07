@@ -20,9 +20,11 @@
 
     #points {
       width: 100%;
-      height: 200px;
+      height: 330px;
       color: black;
       text-align: center;
+      background: rgb(224, 223, 223);
+      border: 5px solid rgb(168, 166, 166);
     }
 
     .display-4 {
@@ -41,11 +43,13 @@
     .col-md-8 {
       width: 100%;
     }
-    h2{
+
+    h2 {
       text-align: center;
     }
-    #number-to-guess{
-      color:red;
+
+    #number-to-guess {
+      color: red;
     }
   </style>
 
@@ -59,20 +63,20 @@
 
   <!-- Note that this div is now empty. We will fill it dynamically -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Luz Hernandez</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/index.html">About</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/portfolio.html">Portfolio</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/contact.html">Contact</a>
-              </li>
-          </ul>
-      </div>
+    <a class="navbar-brand" href="#">Luz Hernandez</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/index.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/portfolio.html">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
   </nav>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -108,25 +112,27 @@
     <div class="row">
       <div class="col-md-1">
       </div>
-
       <div class="col-md-10">
         <div id="scoreBoard">
           <div id="points">
             <br>
             <h2>Wins: </h2>
-            <span id="wins"></span>
+            <span id="wins"><h2>0</h2></span>
             <h2>Losses: </h2>
-            <span id="losses"></span>
+            <span id="losses"><h2>0</h2></span>
+            <h2>Score: </h2>
+            <span id="score"><h2>0</h2></span>
           </div>
         </div>
       </div>
-
       <div class="col-md-1">
       </div>
     </div>
   </div>
+
   <br>
   <br>
+
 </body>
 
 <!-- JAVASCRIPT  -->
@@ -146,15 +152,35 @@
   var losses = 0;
   var counter = 0;
   var wins = 0;
+  var endGame=false;
   // Now for the hard part. Creating multiple crystals each with their own unique number value.
-
   // We begin by expanding our array to include four options.
   // var numberOptions = [10, 5, 3, 7];
   var numberOptions;
+
   function numOptions() {
     return numberOptions = Math.floor(Math.random() * 12) + 1;
   };
 
+  function newGameValues(){
+    targetNum();
+    numOptions();
+    endGame=false;
+    counter=0;
+    $("#number-to-guess").text(targetNum());
+
+  };
+
+  function sameGameValues(){
+    targetNum();
+    endGame=false;
+    counter=0;
+    $("#number-to-guess").text(targetNum());
+
+  };
+
+  
+if(endGame===false){
   // Next we create a for loop to create crystals for every numberOption.
   // for (var i = 0; i < numberOptions.length; i++) {
   for (var i = 0; i < 4; i++) {
@@ -175,17 +201,8 @@
 
     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $("#crystals").append(imageCrystal);
+
   }
-
-  var scores = $("<div>");
-  scores.addClass("points");
-  // scores.html("<h1>" + counter + "</h2>");
-  $("#scoreBoard").append(scores);
-  $("#wins").html(wins);
-  $("#losses").html(losses);
-
-
-
 
   // This time, our click event applies to every single crystal on the page. Not just one.
   $(".crystal-image").on("click", function () {
@@ -204,27 +221,25 @@
     // All of the same game win-lose logic applies. So the rest remains unchanged.
     alert("New score: " + counter);
 
-    scores.append();
-
     if (counter === targetNumber) {
-
-      // scores.attr("data-score", images[i]);
-      scores.attr("data-newScore", counter);
-
       wins++;
+      $("#wins").html("<h2>" + wins + "</h2>");
       alert("You win!");
-
-
-    }
-
-    else if (counter >= targetNumber) {
+      endGame=true;
+      newGameValues();
+      
+    } else if (counter >= targetNumber) {
       losses++;
       alert("You lose!!");
+      $("#losses").html("<h2>" + losses + "</h2>");
+      endGame=true;
+      sameGameValues();
     }
-
+    $("#score").html("<h2>" + counter + "</h2>");
 
   });
 
+}
 </script>
 </body>
 

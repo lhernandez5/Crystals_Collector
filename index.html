@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>simple crystal game</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+  <style type="text/css">
+    body {
+      background: url(images/pink_rice.png);
+      font-family: 'Cinzel', serif;
+    }
+
+    .crystal-image {
+      width: 200px;
+      height: 200px;
+      padding: 20px;
+    }
+
+    #points {
+      width: 100%;
+      height: 200px;
+      color: black;
+      text-align: center;
+    }
+
+    .display-4 {
+      text-align: center;
+    }
+
+    .lead {
+      text-align: center;
+    }
+
+    #crystals {
+      text-align: center;
+      width: auto;
+    }
+
+    .col-md-8 {
+      width: 100%;
+    }
+    h2{
+      text-align: center;
+    }
+    #number-to-guess{
+      color:red;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- <h1>Number to Guess:
+    <span id="number-to-guess"></span>
+  </h1> -->
+
+  <!-- Note that this div is now empty. We will fill it dynamically -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Luz Hernandez</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/index.html">About</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/portfolio.html">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://lhernandez5.github.io/Bootstrap-Portfolio/contact.html">Contact</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">The Crystal Game
+        <span></span>
+      </h1>
+      <br>
+      <p class="lead">You will be given a random number at the start of the game.</p>
+      <p class="lead">There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+      <p class="lead">You win the game by matching your total score to random number, you lose the game if your total score guess above the
+        random number.</p>
+      <p class="lead">The value of each crystal is hidden from you until you click on it.</p>
+      <p class="lead">Each time you guess right the game will reset and if you lose it will maintain the same values.</p>
+      <br>
+      <h2>Number to Guess:
+        <span id="number-to-guess"></span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-10">
+        <div id="crystals">
+        </div>
+      </div>
+      <div class="col-md-1">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+
+      <div class="col-md-10">
+        <div id="scoreBoard">
+          <div id="points">
+            <br>
+            <h2>Wins: </h2>
+            <span id="wins"></span>
+            <h2>Losses: </h2>
+            <span id="losses"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-1">
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+</body>
+
+<!-- JAVASCRIPT  -->
+<!-- ========================================= -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+  // var targetNumber = 53;
+  function targetNum() {
+    return targetNumber = Math.floor(Math.random() * 102) + 19;
+  };
+
+  $("#number-to-guess").text(targetNum());
+
+  var images = ["images/grey.png", "images/green.png", "images/pink.png", "images/blue.png"]
+  var losses = 0;
+  var counter = 0;
+  var wins = 0;
+  // Now for the hard part. Creating multiple crystals each with their own unique number value.
+
+  // We begin by expanding our array to include four options.
+  // var numberOptions = [10, 5, 3, 7];
+  var numberOptions;
+  function numOptions() {
+    return numberOptions = Math.floor(Math.random() * 12) + 1;
+  };
+
+  // Next we create a for loop to create crystals for every numberOption.
+  // for (var i = 0; i < numberOptions.length; i++) {
+  for (var i = 0; i < 4; i++) {
+    // For each iteration, we will create an imageCrystal
+    var imageCrystal = $("<img>");
+
+    // First each crystal will be given the class ".crystal-image".
+    // This will allow the CSS to take effect.
+    imageCrystal.addClass("crystal-image");
+
+    // Each imageCrystal will be given a src link to the crystal image
+    imageCrystal.attr("src", images[i]);
+
+    // Each imageCrystal will be given a data attribute called data-crystalValue.
+    // This data attribute will be set equal to the array value.
+    // imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+    imageCrystal.attr("data-crystalvalue", numOptions());
+
+    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+    $("#crystals").append(imageCrystal);
+  }
+
+  var scores = $("<div>");
+  scores.addClass("points");
+  // scores.html("<h1>" + counter + "</h2>");
+  $("#scoreBoard").append(scores);
+  $("#wins").html(wins);
+  $("#losses").html(losses);
+
+
+
+
+  // This time, our click event applies to every single crystal on the page. Not just one.
+  $(".crystal-image").on("click", function () {
+
+    // Determining the crystal's value requires us to extract the value from the data attribute.
+    // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+    // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+    // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    // We then add the crystalValue to the user's "counter" which is a global variable.
+    // Every click, from every crystal adds to the global counter.
+    counter += crystalValue;
+
+    // All of the same game win-lose logic applies. So the rest remains unchanged.
+    alert("New score: " + counter);
+
+    scores.append();
+
+    if (counter === targetNumber) {
+
+      // scores.attr("data-score", images[i]);
+      scores.attr("data-newScore", counter);
+
+      wins++;
+      alert("You win!");
+
+
+    }
+
+    else if (counter >= targetNumber) {
+      losses++;
+      alert("You lose!!");
+    }
+
+
+  });
+
+</script>
+</body>
+
+</html>

@@ -147,7 +147,6 @@
 
 <script type="text/javascript">
 
-  // var targetNumber = 53;
   function targetNum() {
     return targetNumber = Math.floor(Math.random() * 102) + 19;
   };
@@ -159,17 +158,13 @@
   var counter = 0;
   var wins = 0;
   var endGame = false;
-  // Now for the hard part. Creating multiple crystals each with their own unique number value.
-  // We begin by expanding our array to include four options.
-  var numberOptions = [];
-  // function crystalNumber() {
-  //   for (var i = 0; i < 4; i++) {
-  //     num1 = Math.floor(Math.random() * 12) + 1;
-  //     numberOptions.push(num1);
-  //   };
 
-  function isUnique(arr) {
-    for (var i = 0; i < 6; i++) {
+  //Creating multiple crystals each with their own unique number value.
+  var numberOptions = [];
+ 
+
+  function isUnique() {
+    for (var i = 0; i < 8; i++) {
       num1 = Math.floor(Math.random() * 12) + 1;
       numberOptions.push(num1);
     }
@@ -183,39 +178,42 @@
     return tmp;
   };
 
-  numberOptions = isUnique(numberOptions);
-  console.log(numberOptions);
+  numberOptions = isUnique();
 
   function newGameValues() {
     numberOptions=[];
-    for (var i = 0; i < 6; i++) {
-      num1 = Math.floor(Math.random() * 12) + 1;
-      numberOptions.push(num1);
-    }
-    var tmp = [];
-    for (var i = 0; i < numberOptions.length; i++) {
-      if (tmp.indexOf(numberOptions[i]) === -1) {
-        tmp.push(numberOptions[i]);
-      }
-    }
+    
+    // for (var i = 0; i < 6; i++) {
+    //   num1 = Math.floor(Math.random() * 12) + 1;
+    //   numberOptions.push(num1);
+    // }
+    // var tmp = [];
+    // for (var i = 0; i < numberOptions.length; i++) {
+    //   if (tmp.indexOf(numberOptions[i]) === -1) {
+    //     tmp.push(numberOptions[i]);
+    //   }
+    // }
     targetNum();
-    numberOptions = tmp;
-    console.log(numberOptions);
-    endGame = false;
+    numberOptions = isUnique();
     counter = 0;
     $("#number-to-guess").text(targetNum());
-    return numberOptions
+    endGame = false;
+    console.log(numberOptions);
   };
+// $(".crystal-image").attr("data-crystalvalue", numberOptions);
+console.log(numberOptions);
 
   function sameGameValues() {
     targetNum();
     endGame = false;
     counter = 0;
     $("#number-to-guess").text(targetNum());
-
   };
+  console.log(numberOptions);
 
   if (endGame === false) {
+    console.log("inside false"+numberOptions);
+
     // Next we create a for loop to create crystals for every numberOption.
     // for (var i = 0; i < numberOptions.length; i++) {
     for (var i = 0; i < 4; i++) {
@@ -231,16 +229,13 @@
 
       // Each imageCrystal will be given a data attribute called data-crystalValue.
       // This data attribute will be set equal to the array value.
-      // imageCrystal.attr("data-crystalvalue", numberOptions[i]);
       imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-      console.log(numberOptions[i]);
+      console.log("print this"+ numberOptions[i]);
       // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
       $("#crystals").append(imageCrystal);
 
     }
 
-
-    // This time, our click event applies to every single crystal on the page. Not just one.
     $(".crystal-image").on("click", function () {
 
       // Determining the crystal's value requires us to extract the value from the data attribute.
@@ -254,20 +249,17 @@
       // Every click, from every crystal adds to the global counter.
       counter += crystalValue;
 
-      // All of the same game win-lose logic applies. So the rest remains unchanged.
-      alert("New score: " + counter);
-
       if (counter === targetNumber) {
         wins++;
         $("#wins").html("<h2>" + wins + "</h2>");
-        alert("You win!");
+        // $("#wins").html("<h2>You Win!!!</h2>");
         endGame = true;
         newGameValues();
 
       } else if (counter >= targetNumber) {
         losses++;
-        alert("You lose!!");
         $("#losses").html("<h2>" + losses + "</h2>");
+        // $("#losses").html("<h2>You lose</h2>");
         endGame = true;
         sameGameValues();
       }

@@ -21,11 +21,11 @@ body {
 
 .display-4 {
   text-align: center;
-  color: white;
+  color: grey;
   font-size: 70px;
   background: url(assets/images/pink_rice.png);
   font-weight: bold;
-  border: 3px solid rgb(168, 166, 166);
+  border: 5px solid rgb(252, 250, 250);
 }
 
 .lead {

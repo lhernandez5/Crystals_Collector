@@ -16,6 +16,7 @@ body {
   text-align: center;
   background: rgb(224, 223, 223);
   border: 5px solid rgb(168, 166, 166);
+  margin-bottom: 20%;
 }
 
 .display-4 {

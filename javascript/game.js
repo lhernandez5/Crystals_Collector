@@ -97,5 +97,5 @@ $(".crystal-image").on("click", function() {
     endGame = true;
     sameGameValues();
   }
-  $("#score").html("<h2>" + counter + "</h2>");
+  $("#totalScore").html("<h2>" + counter + "</h2>");
 });

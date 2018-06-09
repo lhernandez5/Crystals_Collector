@@ -37,9 +37,8 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">The Crystal Game
-        <span></span>
       </h1>
-      <br>
+      <br><br>
       <p class="lead">You will be given a random number at the start of the game.</p>
       <p class="lead">There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
       <p class="lead">You win the game by matching your total score to random number, you lose the game if your total score guess above the
@@ -68,6 +67,7 @@
     <div class="row">
       <div class="col-md-1">
       </div>
+
       <div class="col-md-10">
         <div id="scoreBoard">
           <div id="points">
@@ -80,10 +80,8 @@
             <span id="losses">
               <h2>0</h2>
             </span>
-            <h2>Score: </h2>
-            <span id="score">
-              <h2>0</h2>
-            </span>
+            <div id="total"><h2>Score: </h2>
+            <div id="totalScore"><h2>0</h2></div></div>
           </div>
         </div>
       </div>
@@ -91,10 +89,17 @@
       </div>
     </div>
   </div>
-
   <br>
   <br>
-
+  <nav class="navbar fixed-bottom">
+      <p class="copyright"></p>&copy; Copyright 2018 Luz Hernandez
+      <p>
+  </nav>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <script type="text/javascript" src="javascript/game.js"></script>
 </body>
 

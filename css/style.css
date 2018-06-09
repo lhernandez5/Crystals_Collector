@@ -1,0 +1,52 @@
+body {
+  background: url(../images/pink_rice.png);
+  font-family: 'Cinzel', serif;
+}
+
+.crystal-image {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+
+#points {
+  width: 100%;
+  height: 330px;
+  color: black;
+  text-align: center;
+  background: rgb(224, 223, 223);
+  border: 5px solid rgb(168, 166, 166);
+}
+
+.display-4 {
+  text-align: center;
+  color: white;
+  font-size: 70px;
+  background: url(../images/pink_rice.png);
+  font-weight: bold;
+  border: 3px solid rgb(168, 166, 166);
+}
+
+.lead {
+  text-align: center;
+}
+
+#crystals {
+  text-align: center;
+  width: auto;
+}
+
+.col-md-8 {
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+}
+
+#number-to-guess {
+  color: red;
+  font-size: 40px;
+}
+#number{
+}

@@ -1,6 +1,6 @@
 body {
   background: url(../images/pink_rice.png);
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
 }
 
 .crystal-image {
@@ -44,15 +44,14 @@ body {
 h2 {
   text-align: center;
 }
-
 #number-to-guess {
   color: red;
   font-size: 40px;
 }
-#totalScore{
+#totalScore {
   color: red;
 }
-#total{
+#total {
   color: red;
 }
 .navbar.fixed-bottom {
@@ -82,6 +81,6 @@ h2 {
 #navbarSupportedContent {
   margin-left: 35%;
 }
-.navbar-light .navbar-nav .nav-link{
+.navbar-light .navbar-nav .nav-link {
   font-size: 20px;
 }

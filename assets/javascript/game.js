@@ -1,8 +1,8 @@
 var images = [
-  "images/grey.png",
-  "images/green.png",
-  "images/pink.png",
-  "images/blue.png"
+  "assets/images/grey.png",
+  "assets/images/green.png",
+  "assets/images/pink.png",
+  "assets/images/blue.png"
 ];
 var losses = 0;
 var counter = 0;

@@ -12,3 +12,5 @@ The player loses if their score goes above the random number.
 The game restarts whenever the player wins or loses. In both senarios the player will see a new random number. But if there is a win, all the crystals will have four new hidden values. 
 
 The user's score counter will reset to zero for both senarios.
+
+Deployed site: https://lhernandez5.github.io/crystals_collector/

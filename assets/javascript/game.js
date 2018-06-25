@@ -88,13 +88,24 @@ $(".crystal-image").on("click", function() {
 
   if (counter === targetNumber) {
     wins++;
-    $("#wins").html("<h2>" + wins + "</h2>");
+
+    $("#winLose").hide();
+    $("#winLose").html("<h2>You Won!!!</h2>");
+    $("#winLose").show();
+    $("#wins").html("<h3>" + wins + "</h3>");
     endGame = true;
+
     newGameValues();
   } else if (counter >= targetNumber) {
     losses++;
+
+    $("#winLose").hide();
+    $("#winLose").html("<h1>You lost.</h1>");
+    $("#winLose").show();
+
     $("#losses").html("<h2>" + losses + "</h2>");
     endGame = true;
+
     sameGameValues();
   }
   $("#totalScore").html("<h2>" + counter + "</h2>");

@@ -1,4 +1,5 @@
 # Crystals_Collector
+<h3>Deployed site: https://lhernandez5.github.io/crystals_collector/</h3>
 <br>
 There will be four crystals displayed as buttons on the page.
 The player will be shown a random number at the start of the game.
@@ -14,4 +15,4 @@ The game restarts whenever the player wins or loses. In both senarios the player
 
 The user's score counter will reset to zero for both senarios.
 
-Deployed site: https://lhernandez5.github.io/crystals_collector/
+
